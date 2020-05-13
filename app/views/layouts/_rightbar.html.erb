@@ -1,0 +1,27 @@
+<div class="right-nav">
+    <h2> WHO TO FOLLOW</h2>
+    <ul class="follow-data">
+        <% if current_user.to_follow.count == 0 %>
+            <span><p>NO FOLLOWERS YET</p></span>
+        <% else %>
+            <% current_user.to_follow.each do |f|%>
+                <% if !current_user.following?(f) %>
+                <li>
+                    <div>
+                        <% if f.prof_photo.attached? %>
+                            <img class="user-img" src="<%= ( url_for(f.prof_photo))%>"/> 
+                        <% else %>
+                            <img class="user-img" src="<%= f.avatar%>"/>
+                        <% end %>
+                    </div>
+                    <%= link_to new_follower_path(follower_id: current_user.id, followee_id: f.id), method: 'post' do %>
+                        <i class ="fas fa-plus"></i>
+                    <% end %>
+                    <b><%= link_to f.full_name.titleize, user_path(f)%></b><br>
+                    @<%= f.username %><br><br>
+                </li>
+                <% end %>
+            <% end %> 
+        <% end %>
+    </ul>
+</div>

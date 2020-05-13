@@ -1,0 +1,21 @@
+<div class="sidebar">
+    <div class="user-data">
+        <% if current_user.prof_photo.attached? %>
+            <span> <img class="nav-avatar" src="<%= ( url_for(current_user.prof_photo))%>"/> </span>
+            <span class="user-name"> <%= current_user.full_name.upcase%> </span>
+        <% else %>
+            <span> <img class="nav-avatar" src="<%= current_user.avatar%>"/> </span>
+            <span class="user-name"> <%= current_user.full_name.upcase%> </span>
+        <% end %>
+    </div>
+    <ul class="follow-data">
+        <li class="data"><span> <%= current_user.followers.count%> </span><br><span>Followers</span></li>
+        <li class="data"><span> <%= current_user.followees.count%> </span><br><span>Following</span></li>
+    </ul>
+
+    <ul class="nav-pane">
+        <li class="links"><i class="fas fa-home"></i><a href="#"><%= link_to 'home', tweets_path%></a></li>
+        <li class="links"><i class="fas fa-user"></i><a href="#"><%= link_to 'profile', user_path(current_user)%></a></li>
+        <li class="links"><i class="fas fa-sign-out-alt"></i><a href="#"><%= link_to 'sign out', logout_path, method: :delete%></a></li>
+    </ul>
+</div>

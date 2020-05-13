@@ -1,0 +1,78 @@
+<div class="container show-page">
+    <div class="row no-gutters">
+        <div class="main-info col-lg-11">
+            <div class="content">
+            <div>
+                <% if @user.cover_photo.attached? %>
+                    <img class="cover-image" src="<%= ( url_for(@user.cover_photo))%>"/> 
+                <% else %>
+                    <img class="cover-image" src="<%= @user.cover_image%>"/>
+                <% end %>
+            </div>
+            <%= render 'layouts/seminav'%>
+                <div class="jumbotron user-inf">
+                    <div class="user-show">
+                        <div class="avatar">
+                            <% if @user.prof_photo.attached? %>
+                                <img class="avatar-user" src="<%= ( url_for(@user.prof_photo))%>"/> 
+                            <% else %>
+                                <img class="avatar-user" src="<%= @user.avatar%>"/>
+                            <% end %>
+                        </div>
+                        <div class="show-data">
+                            <span class="user-spec"><b class="full-name"><%= @user.full_name.titleize %></b> </span>
+                            <span class="user-spec username"><b class="username">@<%= @user.username %></b> </span>
+                                <div class="user-stats">
+                                    <div class="numbers">
+                                        <span class="stats"> <b>Followers: <%= @user.followers.count%></b> </span>  |  
+                                        <span class="stats"> <b>Following: <%= @user.followees.count%></b> </span>  |  
+                                        <span class="stats"> <b>Tweets: <%= @user.tweets.count%></b> </span>
+                                    </div>
+                                    <% if (current_user != @user) && (!current_user.following?(@user)) %>
+                                        <span><%= link_to 'Follow', new_follower_path(follower_id: current_user.id, followee_id: @user.id), method: 'post', class: "btn btn-primary" %></span>
+                                    <% elsif (current_user != @user) && (current_user.following?(@user)) %>
+                                        <span><%= link_to 'Unfollow', unfollow_path(follower_id: current_user.id, followee_id: @user.id), method: 'delete', class: "btn btn-danger" %></span>
+                                    <% end %>
+                                </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <% if @user == current_user %>
+                    <div class="jumbotron">
+                            <%=form_for(:tweet, url: tweets_path) do |t| %>
+                                <%= t.label :tweet_body, "Tweet something" %>
+                                <%= t.text_field :tweet_body, class: "tweet-input"%><br>
+                                <%= t.submit 'tweet', class: 'submit-tweet btn btn-primary', placeholder: 'Compose new tweet'%>
+                            <% end %>
+                    </div>
+                <% end %>
+                
+                <div class="jumbotron tweets">
+                    <h4>ALL TWEETS (<%= @user.tweets.count %>)</h4>
+                    <hr class="my-4">
+                    <% @user.tweets.each do |t| %>
+                        <div class="cont"> 
+                            <div class="tweet-avatar">
+                                <% if @user.prof_photo.attached? %>
+                                    <img class="t-avatar" src="<%= ( url_for(t.author.prof_photo))%>"/> 
+                                <% else %>
+                                    <img class="t-avatar" src="<%= t.author.avatar%>"/>
+                                <% end %>
+                                <!-- <%# <img class="t-avatar" src="<%= t.author.avatar%>" alt=""> %> -->
+                            </div>
+                            <div class="tweet-deets">
+                                <span><strong><%= t.author.full_name.titleize%></strong><br></span>
+                                <span><%= t.tweet_body %></span>  |  <%= link_to 'reply', tweet_path(t)%> <br><br>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-pane col-lg-1">
+            <%= render 'layouts/profilenav'%>
+        </div>
+    </div>
+</div>

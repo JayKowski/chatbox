@@ -1,0 +1,36 @@
+<div class="right-nav">
+    <div class="user-inf">
+        <div class="user-data">
+            <span><i class="fas fa-plus"></i></span>
+            <% if current_user.prof_photo.attached? %>
+             <img class="avatar" src="<%= ( url_for(current_user.prof_photo))%>"/> 
+            <% else %>
+             <img class="avatar" src="<%= current_user.avatar%>"/>
+            <% end %>
+            <span><i class="fas fa-list-ul"></i></span>
+        </div>
+        <div class="user-deets">
+            <span class="full-name"> <%= current_user.full_name.upcase%> </span> <br>
+            <span class="username"> @<%= current_user.username%> </span>
+        </div>
+        <ul>
+            <li><span class="data-fig"><b><%= current_user.tweets.count%></b></span><br><span class="data-title">Tweets</span></li>
+            <li><span class="data-fig"><b><%= current_user.followees.count%></b></span><br><span class="data-title">Following</span></span></li>
+            <li><span class="data-fig"><b><%= current_user.followers.count%></b></span><br><span class="data-title">Followers</span></span></li>
+        </ul>
+    </div>
+    <div>
+        <h2>FOLLOWED BY</h2>
+        <ul class="follow-data">
+            <% if current_user.followers.count == 0 %>
+                <span><p>NO FOLLOWERS YET</p></span>
+            <% else %>
+                <% current_user.followers.each do |f|%>
+                    <div><img class="user-img" src="<%= f.avatar %>"/></div>
+                    <li><b><%= link_to f.full_name.titleize, user_path(f), class: "user-link"%></b><br>
+                    <span>@<%= f.username%></span><br><br></li>
+                <% end %>
+            <% end %>
+        </ul>
+    </div>
+</div>
