@@ -1,0 +1,13 @@
+<div class="wrap">
+    <div class="sign-in">
+        <div class="form">
+            <h3> WELCOME TO THE LOGIN PAGE! </h3>
+            <%= form_for(:session, url: signin_path) do |form| %>
+                <p><%= form.label :username %></p>
+                <p><%= form.text_field :username%></p>
+                <p><%= form.submit 'Log in' %></p>
+            <% end %>
+            <span>Don't have an account? <%= link_to 'sign up', sign_up_path %></span>
+        </div>
+    </div>
+</div>

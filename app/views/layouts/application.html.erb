@@ -4,12 +4,24 @@
     <title>Chatbox</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   </head>
 
   <body>
+  
+  <div class="wrapper">
+      <% if logged_in? %>
+        <section class="app-main">
+          <%= render 'layouts/leftnav'%>
+        </section>
+        <main class="content">
+          <%= render 'layouts/navbar' %>
+        </main>
+      <% end %>
     <%= yield %>
+  </div>
+
   </body>
 </html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <div class="container show-page">
+            <div class="row">
+
+                <div class="main-info col-lg-11">
+                    <%= render 'layouts/seminav'%>
+                    <div class="content">
+                        <div class="jumbotron">
+                                <%=form_for(:tweet, url: tweets_path) do |t| %>
+                                    <%= t.label :tweet_body, "Tweet something" %>
+                                    <%= t.text_field :tweet_body, class: "tweet-input"%><br>
+                                    <%= t.submit 'tweet', class: 'submit-tweet btn btn-primary', placeholder: 'Compose new tweet'%>
+                                <% end %>
+                        </div>
+                        
+                        <div class="jumbotron tweets">
+                            <h4><%= @tweets.count %> NEW TWEETS</h4>
+                            <hr class="my-4">
+                                <% @tweets.each do |t| %>
+                                <div class="cont"> 
+                                    <div class="tweet-avatar">
+                                        <% if t.author.prof_photo.attached? %>
+                                            <img class="t-avatar" src="<%= ( url_for(t.author.prof_photo))%>"/> 
+                                        <% else %>
+                                            <img class="t-avatar" src="<%= t.author.avatar%>"/>
+                                        <% end %>
+                                    </div>
+                                    <div class="tweet-deets">
+                                        <span><strong><%= link_to t.author.full_name.titleize, user_path(t.author)%></strong><br></span>
+                                        <span><%= t.tweet_body %></span>  |  <%= link_to 'reply', tweet_path(t)%> <br><br>
+                                    </div>
+                                </div>
+                                <% end %>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="right-pane col-lg-1">
+                    <%= render 'layouts/rightbar'%>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,6 @@
+production:
+  cloud_name: "dhngmr3nb"
+  api_key: "787465852681197"
+  api_secret: "B03qUiPOcI6kHLxR7hwIHI4Cisk"
+  secure: true
+  cdn_subdomain: true

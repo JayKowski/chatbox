@@ -1,0 +1,39 @@
+<div class="container reply-page">
+    <div class="row">
+        <div class="tweet-replies col-lg-11">
+            <%= render 'layouts/seminav'%>
+            <div class="replies">
+                <div class="jumbotron">
+                    <h1><%= @tweet.author.username.upcase%>'S TWEET</h1>
+                    <hr class="style1">
+                    <span class="tweet"> >>> <%= @tweet.tweet_body%> <<< </span>
+                    <hr class="style1">
+                    <div class="new-reply">
+                        <ul class="post-comments">
+                            <% @tweet.replies.each do |r| %>
+                                <li>
+                                    <span class="replier"><b>@<%= r.user.username %></b></span> >_
+                                    <span class="reply"><%= r.reply_body %></span> _<
+                                    <span class="time"><%= r.created_at.strftime("%Y/%m/%d") %> </span>
+                                </li>
+                            <% end %>
+                        </ul>
+                    </div>
+                    <hr class="style1">
+                        <%= form_for(@tweet.replies.new, url: tweet_replies_path(@tweet)) do |f| %>
+                            <%= f.label :reply_body, "reply" %>
+                            <%= f.text_field :reply_body, placeholder: 'Add new reply' %>
+                            <%= f.submit 'reply' %>
+                        <% end %>
+                    
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="right-pane col-lg-1">
+            <%= render 'layouts/rightbar'%>
+        </div>
+    </div>
+</div>
