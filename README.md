@@ -1,24 +1,58 @@
-# README
+# Associations With Rails - Eventbrite Clone
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A site similar to a twitter which allows users to air out their opinions as the rest of the users can also comment on opinions shared. Users can create opinions, post them and get replies from the rest of the users. In addition to all that, a user can follow another user too. This project is designed to mimic the logic behind [Twitter](https://twitter.com/).
 
-Things you may want to cover:
 
-* Ruby version
+## Technologies
 
-* System dependencies
+- HTML
+- Bootstrap
+- CSS
+- SASS
+- Ruby
+- Ruby on Rails
 
-* Configuration
+## Usage
 
-* Database creation
+> Clone the repository to your local machine
 
-* Database initialization
+```
+$ git clone https://github.com/JayKowski/chatbox.git
+```
 
-* How to run the test suite
+> cd into the directory
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+$ cd chatbox
+```
 
-* Deployment instructions
+> Then install the needed gems:
 
-* ...
+```
+$ bundle install
+```
+
+> Next, migrate the database:
+
+```
+$ rails db:migrate
+```
+
+> To test, run:
+
+```
+$ bundle exec rspec
+```
+
+> When done with the above steps, you'll be ready to run the app in a local server:
+
+```
+$ rails server
+```
+> upon following the above steps, the app should run successfully on your device!
+
+## Want to access the live deployed version?
+> Follow this link to [Chatbox](https://agile-ocean-79587.herokuapp.com/)
+
+## This app was created by:
+> [Judah Maina](https://github.com/JayKowski)

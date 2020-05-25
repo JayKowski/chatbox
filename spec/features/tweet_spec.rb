@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 require 'capybara/rails'
 
-RSpec.feature "Tweets", type: :feature do
+RSpec.feature 'Tweets', type: :feature do
   let(:user_valid) do
     has_x = { username: 'abednego', full_name: 'sir abednego' }
     has_x

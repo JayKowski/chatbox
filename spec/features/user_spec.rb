@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 require 'capybara/rails'
 
-RSpec.feature "Users", type: :feature do
+RSpec.feature 'Users', type: :feature do
   let(:user_valid) do
     has_x = { username: 'jay', full_name: 'jay kowski' }
     has_x
@@ -17,7 +19,6 @@ RSpec.feature "Users", type: :feature do
     user = User.last
     expect(user.username).to eq(user_valid[:username])
   end
-
 
   scenario 'User profile displays properly' do
     user = User.create(user_valid)
