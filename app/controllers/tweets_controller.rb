@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class TweetsController < ApplicationController
   def index
     @tweets = tweets_timeline.includes([:author])
