@@ -27,7 +27,6 @@ RSpec.feature 'Users', type: :feature do
     Tweet.create(author_id: user.id, tweet_body: 'Lorem Impsum')
     visit user_path(user)
     expect(page).to have_content user.username
-
     expect(page).to have_content user.tweets.last.tweet_body
   end
 end

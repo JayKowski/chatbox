@@ -38,8 +38,8 @@ class User < ApplicationRecord
     return self.photo = pic unless photo.nil?
   end
 
-  def cover_image
+  def cover_img
     cover = 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/rick-and-morty-season-4-summer-1576748877.jpg?crop=1xw:0.9940357852882704xh;center,top&resize=768:*'
-    return self.cover_image = cover unless cover_image.nil?
+    self.cover_image = cover unless cover_image.nil?
   end
 end

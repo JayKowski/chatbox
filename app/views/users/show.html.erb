@@ -6,7 +6,7 @@
                 <% if @user.cover_photo.attached? %>
                     <img class="cover-image" src="<%= ( url_for(@user.cover_photo))%>"/> 
                 <% else %>
-                    <img class="cover-image" src="<%= @user.cover_image%>"/>
+                    <img class="cover-image" src="<%= @user.cover_img%>"/>
                 <% end %>
             </div>
             <%= render 'layouts/seminav'%>
