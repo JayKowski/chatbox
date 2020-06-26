@@ -1,4 +1,4 @@
-# Associations With Rails - Eventbrite Clone
+# Opinion sharing app - Inspired by Twitter Design
 
 A site similar to a twitter which allows users to air out their opinions as the rest of the users can also comment on opinions shared. Users can create opinions, post them and get replies from the rest of the users. In addition to all that, a user can follow another user too. This project is designed to mimic the logic behind [Twitter](https://twitter.com/).
 
@@ -52,7 +52,7 @@ $ rails server
 > upon following the above steps, the app should run successfully on your device!
 
 ## Want to access the live deployed version?
-> Follow this link to [Chatbox](https://agile-ocean-79587.herokuapp.com/)
+> Follow this link to [Chatbox](https://chatttbox.herokuapp.com/)
 
 ## This app was created by:
 > [Judah Maina](https://github.com/JayKowski)
