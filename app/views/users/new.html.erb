@@ -1,0 +1,20 @@
+<div class="wrap">
+    <div class="sign-in">
+        <div class="form">
+            <h3> WELCOME TO THE SIGNUP PAGE! </h3>
+            <%=form_for(:user, url: sign_up_path) do |form| %>
+                <p><%= form.label :username %></p>
+                <p><%= form.text_field :username %></p>
+                <p><%= form.label :full_name %></p>
+                <p><%= form.text_field :full_name %></p>
+                <p> <%= form.label "profile photo", direct_upload: true %> </p>
+                <p> <%= form.file_field :prof_photo %> </p>
+                <p> <%= form.label "cover photo", direct_upload: true %> </p>
+                <p> <%= form.file_field :cover_photo %> </p>
+                <p><%= form.submit 'Sign up'%></p>
+            <% end %>
+            <span>Already have an account? <%= link_to 'sign in', signin_path %></span>
+        </div>
+
+    </div>
+</div>

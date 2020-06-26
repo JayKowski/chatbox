@@ -1,0 +1,7 @@
+<div class="semi-nav">
+    <ul>
+        <li><%= link_to 'home', tweets_path%></li>
+        <li><%= link_to 'profile', user_path(current_user)%></li>
+        <li><%= link_to 'sign out', logout_path, method: :delete%></li>
+    </ul>
+</div>
